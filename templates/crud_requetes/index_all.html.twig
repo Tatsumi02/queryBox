@@ -1,0 +1,58 @@
+{% extends 'base_etudiant.html.twig' %}
+
+{% block title %}Requetes index{% endblock %}
+
+{% block body %}
+<div>
+    <h1>List of requests ({{requetes|length}})</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Etudiant</th>
+                <th>Matricule</th>
+                <th>Matiere</th>
+                <th>Recu</th>
+                <th>Quitus</th>
+                <th>Objet</th>
+                <th>Description</th>
+                <th>Date de dépot</th>
+                <th>Etat</th>
+                <th>Statut</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for requete in requetes %}
+            <tr>
+                <td>{{ requete.id }}</td>
+
+                <td>{{ requete.etudiant.possesseur.nom }} {{ requete.etudiant.possesseur.prenom }}</td>
+                <td>{{ requete.etudiant.possesseur.matricule }}</td>
+
+                <td>{{requete.matiere.titre}}</td>
+                <td>{{ requete.recu }}</td>
+                <td>{{ requete.quitus }}</td>
+                <td>{{ requete.objet }}</td>
+                <td>{{ requete.description }}</td>
+                <td>{{ requete.dateDepot|date("d/n/Y H:i:s") }}</td>
+                <td>{{ requete.etat }}</td>
+                <td>{{ requete.statut }}</td>
+                <td>
+                    <a href="{{ path('app_crud_requetes_show', {'id': requete.id}) }}">show</a>
+                    
+                    <a href="{{ path('app_crud_requetes_edit', {'id': requete.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<hr>
+    <a href="" class="btn btn-primary">Print <span class="fa fa-print"></span></a>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base_root.html.twig' %}
+
+{% block title %}New Admins{% endblock %}
+
+{% block body %}
+<div>
+    <h1>Create new Admins</h1>
+
+    {{ include('crud_admin/_form.html.twig') }}
+<hr>
+    <a href="{{ path('app_crud_admin_index') }}">back to list</a>
+
+    <br><br>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base_log.html.twig' %}
+
+{% block title %}Terminer votre inscription{% endblock %}
+
+{% block body %}
+    <h1>Welcome {{app.user.nom}}</h1>
+    <p class="alert alert-info">
+        Before accessing your interface, complete your registration by completing this form
+    </p>
+
+    <form method="post" action="{{path('app_save_etudiant')}}" >
+
+        <input type="text" name="filiere" placeholder="votre filiere" class="form-control" required/><br>
+        <input type="text" name="niveau" placeholder="votre niveau" class="form-control" required/><br>
+        <input type="text" name="diplome" placeholder="votre plus grand diplome juqu'ici" class="form-control" /><br>
+        <input type="text" name="etablissement" placeholder="votre dernier etablissement avant celui-ci" class="form-control" />
+        <br>
+        <button class="btn btn-primary">Envoyer</button>
+        
+        
+        
+
+    </form>
+   
+{% endblock %}

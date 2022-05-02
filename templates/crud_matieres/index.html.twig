@@ -1,0 +1,43 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Matieres index{% endblock %}
+
+{% block body %}
+<div>
+    <h1>Matieres index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Specialite</th>
+                <th>Niveau</th>
+                <th>Statut</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for matiere in matieres %}
+            <tr>
+                <td>{{ matiere.id }}</td>
+                <td>{{ matiere.titre }}</td>
+                <td>{{ matiere.specialite }}</td>
+                <td>{{ matiere.niveau }}</td>
+                <td>{{ matiere.statut }}</td>
+                <td>
+                    <a href="{{ path('app_crud_matieres_show', {'id': matiere.id}) }}">show</a>
+                    <a href="{{ path('app_crud_matieres_edit', {'id': matiere.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_crud_matieres_new') }}">Create new</a>
+</div>
+{% endblock %}

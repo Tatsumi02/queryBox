@@ -1,0 +1,13 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}New Matieres{% endblock %}
+
+{% block body %}
+<div>
+    <h1>Create new Matieres</h1>
+
+    {{ include('crud_matieres/_form.html.twig') }}
+
+    <a href="{{ path('app_crud_matieres_index') }}">back to list</a>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base_log.html.twig' %}
+
+{% block title %}Hello LoginController!{% endblock %}
+
+{% block body %}
+
+
+
+<h4>Hello! let's get started</h4>
+<h6 class="font-weight-light">Sign in to continue.</h6>
+
+  <div class="col-md-15 login">
+    {% if error %}
+        <div class="alert alert-danger">{{error.messageKey|trans(error.messageData, 'security')}}</div>
+    {% endif %}
+
+    <form action="{{path('app_login')}}" method="post" class="mt-3 mt-sm-5">
+        <label for="username">Email</label>
+        <input type="text" class="form-control" name="_username" id="username" value="{{last_username}}" required>
+
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="_password" id="password" required>
+        <br>
+        <button type="submit" class="btn btn-primary auth-form-btn btn-block btn-facebook">Login</button>
+    </form>
+
+    <div class="text-center mt-4 font-weight-light">
+        Don't have an account? <a href="{{path('app_register')}}" class="text-primary">Create</a>
+      </div>
+  </div>
+
+  
+
+
+{% endblock %}

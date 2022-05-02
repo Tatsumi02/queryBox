@@ -1,0 +1,59 @@
+{% extends 'base_root.html.twig' %}
+
+{% block title %}Admins{% endblock %}
+
+{% block body %}
+<div>
+    <h1>Admins</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ admin.id }}</td>
+            </tr>
+
+            <tr>
+                <th>User</th>
+                <td>{{ admin.possesseur.nom }} {{admin.possesseur.prenom}}</td>
+            </tr>
+
+            <tr>
+                <th>User matricule</th>
+                <td>{{ admin.possesseur.matricule }} </td>
+            </tr>
+
+            <tr>
+                <th>Poste</th>
+                <td>{{ admin.poste }}</td>
+            </tr>
+            <tr>
+                <th>Date_debut_fonction</th>
+                <td>{{ admin.dateDebutFonction ? admin.dateDebutFonction|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Competences</th>
+                <td>{{ admin.competences }}</td>
+            </tr>
+            <tr>
+                <th>Cv</th>
+                <td>{{ admin.cv }}</td>
+            </tr>
+            <tr>
+                <th>Parcours</th>
+                <td>{{ admin.parcours }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ admin.statut }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_crud_admin_index') }}">back to list</a>
+
+    <a href="{{ path('app_crud_admin_edit', {'id': admin.id}) }}">edit</a>
+
+    {{ include('crud_admin/_delete_form.html.twig') }}
+</div>
+{% endblock %}

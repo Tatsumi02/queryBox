@@ -1,0 +1,56 @@
+{% extends 'base_etudiant.html.twig' %}
+
+{% block title %}Requetes{% endblock %}
+
+{% block body %}
+<div>
+    <h1>Requetes</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ requete.id }}</td>
+            </tr>
+            <tr>
+                <th>Matiere</th>
+                <td>{{requete.matiere.titre}}</td>
+            </tr>
+            <tr>
+                <th>Recu</th>
+                <td>{{ requete.recu }}</td>
+            </tr>
+            <tr>
+                <th>Quitus</th>
+                <td>{{ requete.quitus }}</td>
+            </tr>
+            <tr>
+                <th>Objet</th>
+                <td>{{ requete.objet }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ requete.description }}</td>
+            </tr>
+            <tr>
+                <th>Date de depot</th>
+                <td>{{ requete.dateDepot|date("d/m/Y H:i:s") }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ requete.etat }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ requete.statut }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_crud_requetes_index') }}">back to list</a>
+
+    <a href="{{ path('app_crud_requetes_edit', {'id': requete.id}) }}">edit</a>
+
+    {{ include('crud_requetes/_delete_form.html.twig') }}
+</div>
+{% endblock %}

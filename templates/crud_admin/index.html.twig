@@ -1,0 +1,53 @@
+{% extends 'base_root.html.twig' %}
+
+{% block title %}Admins index{% endblock %}
+
+{% block body %}
+<div>
+    <h1>Admins index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>User</th>
+                <th>User matricule</th>
+                <th>Poste</th>
+                <th>Date_debut_fonction</th>
+                <th>Competences</th>
+                <th>Cv</th>
+                <th>Parcours</th>
+               
+                <th>Statut</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for admin in admins %}
+            <tr>
+                <td>{{ admin.id }}</td>
+                <td>{{ admin.possesseur.nom }} {{admin.possesseur.prenom}}</td>
+                <td>{{ admin.possesseur.matricule }}</td>
+                <td>{{ admin.poste }}</td>
+                <td>{{ admin.dateDebutFonction ? admin.dateDebutFonction|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ admin.competences }}</td>
+                <td>{{ admin.cv }}</td>
+                <td>{{ admin.parcours }}</td>
+               
+                <td>{{ admin.statut }}</td>
+                <td>
+                    <a href="{{ path('app_crud_admin_show', {'id': admin.id}) }}">show</a>
+                    <a href="{{ path('app_crud_admin_edit', {'id': admin.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_crud_admin_new') }}">Create new</a>
+</div>
+{% endblock %}
